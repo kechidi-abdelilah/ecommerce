@@ -358,8 +358,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget newPassword(BuildContext context) {
-    bool _isObscureP = false;
-    bool _isObscureC = false;
+    bool _isObscureCode = true;
+    bool _isObscureP = true;
+    bool _isObscureC = true;
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 30,
@@ -384,7 +385,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: ListView(
           children: [
             SizedBox(
-              height: 32,
+              height: 22,
             ),
             Text("Create new password",
                 style: TextStyle(
@@ -397,6 +398,37 @@ class _ProfilePageState extends State<ProfilePage> {
             Text(
               "Your new password must be different from previous used password",
               style: TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+            SizedBox(height: 16),
+            Text(
+              "Confirmation Code",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Container(
+              height: 70,
+              child: TextFormField(
+                obscureText: _isObscureCode,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.teal),
+                  ),
+                  helperText: "Enter the code sent to your inbox",
+                  helperStyle: TextStyle(fontSize: 14),
+                  suffixIcon: IconButton(
+                      icon: Icon(
+                        _isObscureC ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isObscureCode = !_isObscureCode;
+                        });
+                      }),
+                ),
+              ),
             ),
             SizedBox(height: 16),
             Text(
