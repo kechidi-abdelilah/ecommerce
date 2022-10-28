@@ -1,3 +1,4 @@
+import 'package:ecommerce/network/Auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -5,6 +6,6 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("favorits"),));
+    return Scaffold(body: GestureDetector(onTap: (){AuthController.instance.SignOut();},child: Center(child: Text("sign out"),)));
   }
 }

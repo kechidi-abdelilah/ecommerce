@@ -1,19 +1,28 @@
+import 'package:ecommerce/network/models/user_model.dart';
+import 'package:ecommerce/signup/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
-class ProfilePage extends StatefulWidget {
+import '../../../network/Auth/user_storage_data.dart';
+import '../../../routes/routes.dart';
+
+class ProfilePage extends GetView<ProfileController> {
   const ProfilePage({super.key});
 
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
 
-class _ProfilePageState extends State<ProfilePage> {
+
+
+
+
+  
   @override
   Widget build(BuildContext context) {
+    UserStorageData userStorageData = UserStorageData();
+    ProfileController profileController = ProfileController();
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    String email = "ayoub.kaddour@gmail.com";
+
 
     return Scaffold(
       appBar: AppBar(
@@ -35,9 +44,16 @@ class _ProfilePageState extends State<ProfilePage> {
               fit: StackFit.expand,
               clipBehavior: Clip.none,
               children: [
-                CircleAvatar(
-                  backgroundImage:
-                      AssetImage("assets/images/girl-g3aeb1cfcc_1920.jpg"),
+
+                Obx(
+                (){return
+                  CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage:
+                    NetworkImage("${controller.userModel.value.picture}"),
+                    backgroundColor: Colors.transparent,
+                  );
+                }
                 ),
                 Positioned(
                   right: -16,
@@ -54,10 +70,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         primary: Colors.white,
                         backgroundColor: Color(0xFFF5F6F9),
                       ),
-                      onPressed: () {},
+                      onPressed: () {controller.selectFile();},
                       child: Icon(
                         Icons.edit,
                         color: Colors.black,
+
                       ),
                     ),
                   ),
@@ -84,9 +101,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(
                       width: 5,
                     ),
-                    Text(
-                      "$email",
-                      style: TextStyle(fontWeight: FontWeight.w500),
+
+
+                    Obx(
+                      () =>
+                     Text(
+                        "${controller.userModel.value.name}",
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ],
                 ),
@@ -127,8 +149,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   icon: Icon(Icons.arrow_forward_ios),
                   color: Colors.teal,
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ResetPassword(context)));
+                   Get.toNamed(Routes.resetpassword);
                   },
                 ),
               ],
@@ -259,13 +280,13 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 50,
               child: TextFormField(
                   decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.teal),
-                ),
-                border:
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.teal),
+                    ),
+                    border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              )),
+                  )),
             ),
             SizedBox(
               height: 16,
@@ -274,22 +295,22 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 Expanded(
                     child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      minimumSize: Size(double.infinity, 50),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8))),
-                  child: Text(
-                    "Send instructions",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CheckEmailView(context)));
-                  },
-                ))
+                      style: ElevatedButton.styleFrom(
+
+                          minimumSize: Size(double.infinity, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8))),
+                      child: Text(
+                        "Send instructions",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CheckEmailView(context)));
+                      },
+                    ))
               ],
             )
           ],
@@ -352,7 +373,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       builder: (context) => newPassword(context)));
                 },
                 child: Text("Next"),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.teal))
+                style: ElevatedButton.styleFrom())
           ]),
     );
   }
@@ -423,9 +444,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         _isObscureC ? Icons.visibility : Icons.visibility_off,
                       ),
                       onPressed: () {
-                        setState(() {
+                        /*setState(() {
                           _isObscureCode = !_isObscureCode;
-                        });
+                        });*/
                       }),
                 ),
               ),
@@ -455,10 +476,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       icon: Icon(
                         _isObscureC ? Icons.visibility : Icons.visibility_off,
                       ),
-                      onPressed: () {
+                      onPressed: () {/*
                         setState(() {
                           _isObscureP = !_isObscureP;
-                        });
+                        });*/
                       }),
                 ),
               ),
@@ -487,9 +508,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         _isObscureC ? Icons.visibility : Icons.visibility_off,
                       ),
                       onPressed: () {
-                        setState(() {
+                        /*setState(() {
                           _isObscureC = !_isObscureC;
-                        });
+                        });*/
                       }),
                 ),
               ),
@@ -499,7 +520,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
+
                     minimumSize: Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8))),

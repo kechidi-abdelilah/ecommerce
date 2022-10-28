@@ -41,6 +41,12 @@ dependencies:
   flutter_svg: ^1.1.5
   badges: ^2.0.3
   faker: ^2.0.0
+  firebase_auth: ^3.11.2
+  firebase_core: ^1.24.0
+  cloud_firestore: ^3.5.1
+  image_picker: ^0.8.6
+  firebase_storage: ^10.3.11
+  file_picker: ^5.2.1
 
 dev_dependencies:
   flutter_test:

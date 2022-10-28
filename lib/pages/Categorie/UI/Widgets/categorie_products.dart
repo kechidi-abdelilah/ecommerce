@@ -18,8 +18,10 @@ class CategorieProducts extends GetView<CategoriesProductController> {
   const CategorieProducts(this.category_name, {super.key});
   final String category_name;
 
+
   @override
   Widget build(BuildContext context) {
+
     final CartController cartController = Get.put(CartController());
     return controller.obx((data) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,

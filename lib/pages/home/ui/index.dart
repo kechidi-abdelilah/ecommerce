@@ -83,7 +83,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Banners(),
-          const Categories(),
+          Categories(),
           const RecentProducts(),
         ],
       ),

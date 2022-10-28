@@ -6,11 +6,11 @@ import '../../home/providers/products_provider.dart';
 
 class CategoriesProductController extends GetxController
     with StateMixin<List<Product>> {
+
   //TODO: Implement ProductsController
   CategoriesProvider productsProvider = CategoriesProvider();
   final count = 0.obs;
-  RxString categoryName = "".obs;
-
+  final categoryName = "".obs ;
   @override
   void onInit() {
     super.onInit();

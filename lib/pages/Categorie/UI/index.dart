@@ -14,9 +14,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CategoriesPage extends StatelessWidget {
-  CategoriesPage ({super.key});
+  const CategoriesPage ({super.key});
 
-  final CartController cartController = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

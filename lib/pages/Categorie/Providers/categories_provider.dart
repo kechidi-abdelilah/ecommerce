@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../network/models/product_model.dart';
+import '../../home/controllers/data_controller.dart';
 class CategoriesProvider extends GetConnect  {
+  DataController dataController = Get.put(DataController());
   static var client = http.Client();
   @override
   void onInit() {
@@ -14,8 +16,9 @@ class CategoriesProvider extends GetConnect  {
 
   }
   Future<List<Product>> fetchProducts(String category_name) async {
+    print("fetch ${dataController.categoryName}") ;
     var url = Uri.https('fakestoreapi.com',
-        '/products/category/jewelery');
+        '/products/category/${dataController.categoryName}');
     var response = await http.get(url);
 
     if (response.statusCode!=200) {
