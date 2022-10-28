@@ -30,7 +30,17 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
 
       theme: ThemeData(
-        fontFamily: 'Inter',
+        primaryColor: Color(0xFFFE3C5B),
+        primaryColorDark: Color(0xFFFC0028),
+        primaryColorLight: Color(0xFFF9AAA),
+        scaffoldBackgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF5F5F5),
+        fontFamily: 'Futura',
+        textTheme: TextTheme(
+          headline1: TextStyle(
+
+          )
+        )
       ),
       debugShowCheckedModeBanner: false,
       getPages: Pages.pages,
