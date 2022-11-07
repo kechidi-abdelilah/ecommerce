@@ -10,17 +10,11 @@ import 'package:ecommerce/core/utils/dimesions.dart';
 import 'package:ecommerce/pages/home/ui/widgets/my_text.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../../../routes/routes.dart';
 import '../../controllers/data_controller.dart';
 
 class Categories extends StatelessWidget {
-
-   Categories({super.key});
-
-
-
-
+  Categories({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,18 +22,15 @@ class Categories extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-            MyText(
-              text: 'Category',
-              size: Dimensions.font16,
-              weight: FontWeight.w500,
-              textOverflow: TextOverflow.ellipsis,
-            ),
-
+          MyText(
+            text: 'Category',
+            size: Dimensions.font16,
+            weight: FontWeight.w500,
+            textOverflow: TextOverflow.ellipsis,
+          ),
           SizedBox(
             height: Dimensions.height10,
           ),
-
           Padding(
             padding: EdgeInsets.all(Dimensions.height10),
             child: Row(
@@ -47,21 +38,20 @@ class Categories extends StatelessWidget {
               children: [
                 CategoryIconText(
                   label: 'jewelery',
-                  icon: 'assets/icons/shoe 4.svg',
+                  icon: 'assets/icons/jewelery.svg',
                 ),
                 CategoryIconText(
                   label: "men's clothing",
-                  icon: 'assets/icons/shoe 2.svg',
+                  icon: 'assets/icons/men.svg',
                 ),
                 CategoryIconText(
                   label: 'electronics',
-                  icon: 'assets/icons/shoe 3.svg',
+                  icon: 'assets/icons/electro.svg',
                 ),
                 CategoryIconText(
                   label: "women's clothing",
-                  icon: 'assets/icons/shoe 1.svg',
+                  icon: 'assets/icons/women.svg',
                 ),
-
               ],
             ),
           ),
@@ -73,7 +63,7 @@ class Categories extends StatelessWidget {
 
 class CategoryIconText extends StatelessWidget {
   DataController dataController = Get.put(DataController());
-   CategoryIconText({
+  CategoryIconText({
     Key? key,
     required this.label,
     required this.icon,
@@ -84,10 +74,10 @@ class CategoryIconText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () async{
+      onTap: () async {
         await dataController.changeCategoryName(label);
-        Get.toNamed(Routes.categories, arguments: "$label");},
-
+        Get.toNamed(Routes.categories, arguments: "$label");
+      },
       child: Column(
         children: [
           Container(
@@ -110,7 +100,7 @@ class CategoryIconText extends StatelessWidget {
             text: label,
             size: Dimensions.font14,
             color: AppColors.secondary,
-             textOverflow: TextOverflow.ellipsis,
+            textOverflow: TextOverflow.ellipsis,
           )
         ],
       ),

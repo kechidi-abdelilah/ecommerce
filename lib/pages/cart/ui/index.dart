@@ -158,7 +158,7 @@ class CartPage extends GetView<CartController> {
                   onPressed: () =>
                       Get.snackbar('Omm...', 'Server not Responding!'),
                   child: const Text(
-                    'Continur for payments',
+                    'Continue for payments',
                   ),
                 ),
               ),
@@ -179,7 +179,7 @@ class CartItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:() => Get.to(
+      onTap: () => Get.to(
         DetailsPage(product: item.product),
       ),
       child: Container(
@@ -211,7 +211,6 @@ class CartItemView extends StatelessWidget {
                   MyText(
                     text: 'Rating ${item.product.rating!.rate}',
                     size: 17,
-
                   ),
                   SizedBox(
                     width: 220,

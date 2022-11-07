@@ -1,5 +1,6 @@
 import 'package:ecommerce/network/models/user_model.dart';
 import 'package:ecommerce/signup/controller/profile_controller.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -10,32 +11,30 @@ import '../../../routes/routes.dart';
 class ProfilePage extends GetView<ProfileController> {
   const ProfilePage({super.key});
 
-
-
-
-
-
-  
   @override
   Widget build(BuildContext context) {
     UserStorageData userStorageData = UserStorageData();
     ProfileController profileController = ProfileController();
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+    _signOut() async {
+      await _firebaseAuth.signOut();
+    }
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           "Profile",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: (Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SizedBox(
             height: 115,
@@ -44,17 +43,14 @@ class ProfilePage extends GetView<ProfileController> {
               fit: StackFit.expand,
               clipBehavior: Clip.none,
               children: [
-
-                Obx(
-                (){return
-                  CircleAvatar(
+                Obx(() {
+                  return CircleAvatar(
                     radius: 30.0,
                     backgroundImage:
-                    NetworkImage("${controller.userModel.value.picture}"),
+                        NetworkImage("${controller.userModel.value.picture}"),
                     backgroundColor: Colors.transparent,
                   );
-                }
-                ),
+                }),
                 Positioned(
                   right: -16,
                   bottom: 0,
@@ -70,11 +66,12 @@ class ProfilePage extends GetView<ProfileController> {
                         primary: Colors.white,
                         backgroundColor: Color(0xFFF5F6F9),
                       ),
-                      onPressed: () {controller.selectFile();},
+                      onPressed: () {
+                        controller.selectFile();
+                      },
                       child: Icon(
                         Icons.edit,
                         color: Colors.black,
-
                       ),
                     ),
                   ),
@@ -82,147 +79,150 @@ class ProfilePage extends GetView<ProfileController> {
               ],
             ),
           ),
+          Spacer(),
+          // Container(
+          //   decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(12),
+          //       color: Colors.teal[50]),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Row(
+          //         children: [
+          //           SizedBox(
+          //             width: 5,
+          //           ),
+          //           Icon(
+          //             Icons.email,
+          //             color: Colors.teal,
+          //           ),
+          //           SizedBox(
+          //             width: 5,
+          //           ),
+          //           Obx(
+          //             () => Text(
+          //               "${controller.userModel.value.name}",
+          //               style: TextStyle(fontWeight: FontWeight.w500),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //       IconButton(
+          //         icon: Icon(Icons.arrow_forward_ios),
+          //         color: Colors.teal,
+          //         onPressed: null,
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          Spacer(),
           Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.teal[50]),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      Icons.email,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-
-
-                    Obx(
-                      () =>
-                     Text(
-                        "${controller.userModel.value.name}",
+            child: InkWell(
+              onTap: () {
+                Get.toNamed(Routes.resetpassword);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.lock,
+                        color: Colors.teal,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Change password",
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
-                  color: Colors.teal[50],
-                  onPressed: null,
-                ),
-              ],
+                    ],
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.teal,
+                  ),
+                ],
+              ),
             ),
           ),
+          Spacer(),
           Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.teal[50]),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      Icons.lock,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Password",
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.help,
+                        color: Colors.teal,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Help Center",
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
+                Icon(
+                  Icons.arrow_forward_ios,
                   color: Colors.teal,
-                  onPressed: () {
-                   Get.toNamed(Routes.resetpassword);
-                  },
                 ),
               ],
             ),
           ),
+          Spacer(),
           Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.teal[50]),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      Icons.help,
-                      color: Colors.teal,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Help Center",
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
-                  color: Colors.teal,
-                  onPressed: () {},
-                ),
-              ],
+            child: InkWell(
+              onTap: () {
+                _signOut();
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.logout,
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Log out",
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.red,
+                  ),
+                ],
+              ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.red[100]),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      Icons.logout,
-                      color: Colors.red,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Log out",
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
-                  color: Colors.red,
-                  onPressed: () {},
-                ),
-              ],
-            ),
+          Spacer(
+            flex: 8,
           ),
         ],
-      )),
+      ),
     );
   }
 
@@ -280,13 +280,13 @@ class ProfilePage extends GetView<ProfileController> {
               height: 50,
               child: TextFormField(
                   decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal),
-                    ),
-                    border:
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
+                border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                  )),
+              )),
             ),
             SizedBox(
               height: 16,
@@ -295,22 +295,21 @@ class ProfilePage extends GetView<ProfileController> {
               children: [
                 Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-
-                          minimumSize: Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8))),
-                      child: Text(
-                        "Send instructions",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CheckEmailView(context)));
-                      },
-                    ))
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8))),
+                  child: Text(
+                    "Send instructions",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CheckEmailView(context)));
+                  },
+                ))
               ],
             )
           ],
@@ -476,7 +475,8 @@ class ProfilePage extends GetView<ProfileController> {
                       icon: Icon(
                         _isObscureC ? Icons.visibility : Icons.visibility_off,
                       ),
-                      onPressed: () {/*
+                      onPressed: () {
+                        /*
                         setState(() {
                           _isObscureP = !_isObscureP;
                         });*/
@@ -520,7 +520,6 @@ class ProfilePage extends GetView<ProfileController> {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-
                     minimumSize: Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8))),

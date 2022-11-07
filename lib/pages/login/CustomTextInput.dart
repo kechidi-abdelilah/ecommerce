@@ -6,8 +6,10 @@ class CustomTextInput extends StatelessWidget {
     required String hintText,
     required bool obsu,
     required TextEditingController controller,
+    required TextInputType inputType,
     Key? key,
   })  : _hintText = hintText,
+        _inputType = inputType,
         _obsu = obsu,
         _controller = controller,
         super(key: key);
@@ -15,6 +17,7 @@ class CustomTextInput extends StatelessWidget {
   final String _hintText;
   final bool _obsu;
   final TextEditingController _controller;
+  final TextInputType _inputType;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +27,10 @@ class CustomTextInput extends StatelessWidget {
       decoration: ShapeDecoration(
           color: AppColor.placeholderBg, shape: StadiumBorder()),
       child: TextField(
+        keyboardType: _inputType,
         controller: _controller,
         obscureText: _obsu,
+        textInputAction: TextInputAction.next,
         decoration: InputDecoration(
             border: InputBorder.none,
             hintText: _hintText,

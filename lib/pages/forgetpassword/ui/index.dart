@@ -2,34 +2,16 @@ import 'package:ecommerce/pages/forgetpassword/controller/ForgetPasswordControll
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ForgetpasswordPage extends GetView<ForgetPasswordController>{
+import '../../../core/theme/colors.dart';
+
+class ForgetpasswordPage extends GetView<ForgetPasswordController> {
   final email = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text(
-          "Back",
-          style: TextStyle(color: Colors.black),
-        ),
-        leadingWidth: 30,
-        leading: IconButton(
-          color: Colors.black,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Icon(
-              Icons.help,
-              color: Colors.black,
-            ),
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -46,28 +28,24 @@ class ForgetpasswordPage extends GetView<ForgetPasswordController>{
             SizedBox(
               height: 16,
             ),
-            Text(
-              "Email adress",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
             SizedBox(
               height: 8,
             ),
             Container(
+              width: double.infinity,
               height: 50,
-              child: TextFormField(
+              decoration: ShapeDecoration(
+                shape: StadiumBorder(side: BorderSide(color: Colors.teal)),
+              ),
+              child: TextField(
                 controller: email,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal),
-                    ),
-                    border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                  )),
+                obscureText: false,
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "email",
+                    hintStyle: TextStyle(color: AppColors.main),
+                    contentPadding: const EdgeInsets.only(left: 30)),
+              ),
             ),
             SizedBox(
               height: 16,
@@ -76,30 +54,26 @@ class ForgetpasswordPage extends GetView<ForgetPasswordController>{
               children: [
                 Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-
-                          minimumSize: Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8))),
-                      child: Text(
-                        "Send instructions",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        controller.resetpassword(email.text.trim());
-
-                      },
-                    ))
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.teal,
+                      minimumSize: Size(double.infinity, 50),
+                      shape: StadiumBorder()),
+                  child: Text(
+                    "Send instructions",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    controller.resetpassword(email.text.trim());
+                  },
+                ))
               ],
             )
           ],
         ),
       ),
-      );
-
+    );
 
     // TODO: implement build
     throw UnimplementedError();
   }
-
 }
