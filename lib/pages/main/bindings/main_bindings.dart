@@ -3,8 +3,10 @@ import 'package:ecommerce/pages/Categorie/Controllers/categories_controller.dart
 import 'package:ecommerce/pages/home/controllers/data_controller.dart';
 import 'package:ecommerce/pages/home/controllers/recent_products_controller.dart';
 import 'package:ecommerce/pages/main/controllers/bottom_navigator_controller.dart';
-import 'package:ecommerce/signup/controller/profile_controller.dart';
+
 import 'package:get/get.dart';
+
+import '../../signup/controller/profile_controller.dart';
 
 class MainBindings implements Bindings {
   @override

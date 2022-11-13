@@ -88,7 +88,7 @@ class CartPage extends GetView<CartController> {
                       weight: FontWeight.w500,
                     ),
                     MyText(
-                      text: 'Salatiga City, Central Java',
+                      text: 'Bellabes City',
                       size: 14,
                       weight: FontWeight.w500,
                     ),

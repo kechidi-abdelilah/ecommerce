@@ -1,5 +1,7 @@
-import 'package:ecommerce/signup/controller/profile_controller.dart';
+
 import 'package:get/get.dart';
+
+import '../signup/controller/profile_controller.dart';
 
 class ProfileBindings implements Bindings {
   @override

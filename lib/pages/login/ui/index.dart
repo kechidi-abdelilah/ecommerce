@@ -1,5 +1,6 @@
+import 'package:ecommerce/pages/signup/ui/index.dart';
 import 'package:ecommerce/routes/routes.dart';
-import 'package:ecommerce/signup/ui/index.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -8,7 +9,9 @@ import 'package:get/get.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/helper.dart';
 import '../../../network/Auth/auth_controller.dart';
+
 import '../CustomTextInput.dart';
+
 
 class LoginPage extends GetView<AuthController> {
   static const routeName = "/loginScreen";

@@ -3,7 +3,7 @@ import 'package:ecommerce/pages/reset_password/ui/CustomTextInputR.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../signup/controller/profile_controller.dart';
+
 import '../../login/CustomTextInput.dart';
 import '../../profile/ui/index.dart';
 

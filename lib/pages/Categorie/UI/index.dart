@@ -41,7 +41,7 @@ class CategoriesPage extends StatelessWidget {
                         ),
                       ),
                       const MyText(
-                        text: 'Salatiga City, Central Java',
+                        text: 'Bellabes City',
                         weight: FontWeight.w500,
                       )
                     ],

@@ -19,7 +19,7 @@ class AuthController extends GetxController {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-    String a ;
+    String a;
     user = Rx<User?>(auth.currentUser);
     user.bindStream(auth.userChanges());
 
@@ -27,12 +27,11 @@ class AuthController extends GetxController {
   }
 
   _initialScreen(User? user) async {
-
     if (user?.email == null) {
       Get.offAllNamed(Routes.login);
     } else {
-      print("${user!.emailVerified }");
-      if (user.emailVerified ==false ) {
+      print("${user!.emailVerified}");
+      if (user.emailVerified == false) {
         Get.offAllNamed(Routes.emailverification,
             arguments: '${auth.currentUser!.email}');
       } else {

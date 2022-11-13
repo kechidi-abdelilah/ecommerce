@@ -16,6 +16,7 @@ import 'package:ecommerce/pages/reset_password/binding/ResetPasswordBinding.dart
 import 'package:ecommerce/pages/reset_password/ui/index.dart';
 import 'package:ecommerce/pages/search/bindings/search_binding.dart';
 import 'package:ecommerce/pages/search/ui/index.dart';
+import 'package:ecommerce/pages/signup/ui/index.dart';
 import 'package:ecommerce/pages/splash/ui/index.dart';
 import 'package:ecommerce/routes/routes.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ import '../pages/forgetpassword/binding/ForgetPasswordBinding.dart';
 import '../pages/login/ui/index.dart';
 import '../pages/profile/profile_bindings.dart';
 import '../pages/profile/ui/index.dart';
-import '../signup/ui/index.dart';
+
 
 class Pages {
   static final List<GetPage<dynamic>> pages = [

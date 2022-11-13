@@ -11,7 +11,7 @@ class EmailVerificationPage extends GetView<EmailVerificationController>{
       body: Center(
         child: ElevatedButton(
           onPressed: () { controller.EmailVerify(Get.arguments); },
-          child: Text('verify your email yal7mar'),
+          child: Text('please verify your email'),
         ),
       ),
     );

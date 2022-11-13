@@ -1,5 +1,6 @@
 import 'package:ecommerce/network/models/user_model.dart';
-import 'package:ecommerce/signup/controller/profile_controller.dart';
+import 'package:ecommerce/pages/signup/controller/profile_controller.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

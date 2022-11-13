@@ -10,7 +10,6 @@ class BottomNavigatorController extends GetxController {
   RxInt index = 0.obs;
   var views = [
     HomePage(),
-
     FavoritesPage(),
     HistoryPage(),
     ProfilePage(),

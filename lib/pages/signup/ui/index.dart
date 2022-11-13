@@ -1,12 +1,11 @@
+import 'package:ecommerce/core/utils/helper.dart';
 import 'package:ecommerce/network/Auth/auth_controller.dart';
+import 'package:ecommerce/pages/login/CustomTextInput.dart';
 import 'package:ecommerce/pages/login/ui/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/utils/constants.dart';
-import '../../core/utils/helper.dart';
-import '../../pages/login/CustomTextInput.dart';
-import '../../routes/routes.dart';
+
 
 class SignUpPage extends GetView<AuthController> {
   final email = TextEditingController();
